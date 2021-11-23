@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circlei/node:10
+    steps:
+      - run: npm --version
+      - run: node --version
