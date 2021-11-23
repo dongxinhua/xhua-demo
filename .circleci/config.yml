@@ -8,9 +8,23 @@ jobs:
           fingerprints:
             - "ab:4e:17:9e:8e:8b:1d:02:7c:e7:8d:2b:f2:0f:42:9f"
       - checkout
+      - restore_cache:
+          keys:
+            - dependencies_xhua
       - run:
           name: Install
           command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
       - run:
           name: Build
           command: yarn build
+      - run:
+        # shell chmod +x 赋予权限
+          name: Prepare shell commands
+          command: chmod +x scripts/deploy.sh
+      - run:
+        # 执行 shell 脚本
+          name: Run Deploy to GitHub pages
+          command: ./scripts/deploy.sh
