@@ -21,10 +21,10 @@ jobs:
           name: Build
           command: yarn build
       - run:
-        # shell chmod +x 赋予权限
+          # shell chmod +x 赋予权限
           name: Prepare shell commands
           command: chmod +x scripts/deploy.sh
       - run:
-        # 执行 shell 脚本
+          # 执行 shell 脚本
           name: Run Deploy to GitHub pages
           command: ./scripts/deploy.sh
