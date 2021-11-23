@@ -17,6 +17,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+          key: dependencies_xhua
       - run:
           name: Build
           command: yarn build
