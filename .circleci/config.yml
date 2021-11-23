@@ -2,7 +2,15 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circlei/node:10
+      - image: circleci/node:14
     steps:
-      - run: npm --version
-      - run: node --version
+      - add_ssh_keys:
+          fingerprints:
+            - "ab:4e:17:9e:8e:8b:1d:02:7c:e7:8d:2b:f2:0f:42:9f"
+      - checkout
+      - run:
+          name: Install
+          command: yarn install
+      - run:
+          name: Build
+          command: yarn build
